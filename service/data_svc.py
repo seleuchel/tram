@@ -1,7 +1,7 @@
 import re
 import json
 import logging
-from taxii2client import Collection
+from taxii2client.v20 import Collection
 from stix2 import TAXIICollectionSource, Filter
 
 
@@ -38,7 +38,7 @@ class DataService:
         """
         logging.info('Downloading ATT&CK data from STIX/TAXII...')
         attack = {}
-        collection = Collection("https://cti-taxii.mitre.org/stix/collections/95ecc380-afe9-11e4-9b6c-751b66dd541e/")
+        collection = Collection("https://cti-taxii.mitre.org/stix/collections/95ecc380-afe9-11e4-9b6c-751b66dd541e/") #enterprise
         tc_source = TAXIICollectionSource(collection)
         filter_objs = {"techniques": Filter("type", "=", "attack-pattern"),
                        "groups": Filter("type", "=", "intrusion-set"), "malware": Filter("type", "=", "malware"),
